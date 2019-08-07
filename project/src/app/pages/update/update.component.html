@@ -1,0 +1,38 @@
+<div class="container">
+    <h1>Update</h1>
+    <div>
+        <div nz-row nzType="flex" nzJustify="space-around">
+            <div nz-col nzSpan="5">
+                <input nz-input placeholder=" Name" [(ngModel)]="user.username" />
+            </div>
+            <div nz-col nzSpan="5">
+                <input nz-input placeholder=" Password" [(ngModel)]="user.password" />
+            </div>
+            <div nz-col nzSpan="5">
+                <input nz-input placeholder=" Email" [(ngModel)]="user.email" />
+            </div>
+            <div nz-col nzSpan="5">
+                <input nz-input placeholder=" Date" [(ngModel)]="user.date" />
+            </div>
+        </div>
+        <div nz-row nzType="flex" nzJustify="space-around">
+            <div nz-col nzSpan="5">
+                <input nz-input placeholder=" Sex" [(ngModel)]="user.sex" />
+            </div>
+            <div nz-col nzSpan="5">
+                <input nz-input placeholder=" Phone" [(ngModel)]="user.phone" />
+            </div>
+            <div nz-col nzSpan="5">
+                <input nz-input placeholder=" National_id" [(ngModel)]="user.national_id" />
+            </div>
+            <div nz-col nzSpan="5">
+                <input nz-input placeholder=" Height" [(ngModel)]="user.height" />
+            </div>
+        </div>
+        <hr>
+    </div>
+    <div class="space">
+        <button nz-button nzType="primary" (click)="updateData()">Update</button>
+    </div>
+
+</div>

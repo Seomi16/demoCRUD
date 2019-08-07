@@ -1,0 +1,48 @@
+<h1>List</h1>
+<div nz-row style="float: right;">
+  <button nz-button nzType="primary" (click)="Update()">Update</button>
+  <button style="margin-left: 5px; background-color: red" nz-button nzType="default" (click)="Delete()">Delete</button>
+</div>
+<div nz-row style="float: left;"  >
+  <input style="width: 400px;" nz-input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off"
+    placeholder=" Searching for a user by id or name or country ">
+</div>
+<br><br>
+
+<nz-table #rowSelectionTable nzShowSizeChanger [nzData]="(isshow)? listOfAllData : listdata"
+  (nzCurrentPageDataChange)="currentPageDataChange($event)">
+  <thead>
+    <tr>
+      <!-- <th nzShowCheckbox [(nzChecked)]="isAllDisplayDataChecked" [nzIndeterminate]="isIndeterminate"
+        (nzCheckedChange)="checkAll($event)"></th> -->
+      <th></th>
+      <th>Username</th>
+      <th>Password</th>
+      <th>Email</th>
+      <th>Birth</th>
+      <th>Sex</th>
+      <th>Phone</th>
+      <th>Height</th>
+
+    </tr>
+  </thead>
+  <tbody *ngFor="let data of rowSelectionTable.data| filter: searchText ; let i = index"   >
+    <tr >
+      <td nzShowCheckbox [(nzChecked)]="mapOfCheckedId[data.ID]" (nzCheckedChange)="refresh($event,data)"></td>
+      <td><input style="width: 100px;" nz-input value="data.Username" [(ngModel)]="data.Username" [disabled]="(isshow)? true : false" /></td>
+      <td><input style="width: 100px;" nz-input value="data.Password" [(ngModel)]="data.Password" [disabled]="(isshow)? true : false" /></td>
+      <td><input style="width: 150px;" nz-input value="data.Email" [(ngModel)]="data.Email" [disabled]="(isshow)? true : false" /></td>
+      <td><input style="width: 100px;" nz-input value="birth[i]" [(ngModel)]="birth[i]" [disabled]="(isshow)? true : false" /></td>      
+      <!-- <td>
+          <Select defaultValue="data.Sex" style="width: 70px;" name="sex" ngDefaultControl [(ngModel)]="data.Sex" [disabled]="(isshow)? true : false">
+              <Option value="0"  [disabled]="(isshow)? true : false">Male</Option>
+              <Option value="1"  [disabled]="(isshow)? true : false">Female</Option>              
+            </Select>
+      </td> -->
+      <td><input style="width: 70px;" nz-input [value]="data.Sex" [(ngModel)]="data.Sex" [disabled]="(isshow)? true : false" /></td>
+      <td><input style="width: 100px;" nz-input value="data.Phone" [(ngModel)]="data.Phone" [disabled]="(isshow)? true : false" /></td>
+      <td><input style="width: 50px;" nz-input value="data.Height" [(ngModel)]="data.Height" [disabled]="(isshow)? true : false" /></td>
+     
+    </tr>
+  </tbody>
+</nz-table>
