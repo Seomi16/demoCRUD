@@ -29,10 +29,10 @@
   <tbody *ngFor="let data of rowSelectionTable.data| filter: searchText ; let i = index"   >
     <tr >
       <td nzShowCheckbox [(nzChecked)]="mapOfCheckedId[data.ID]" (nzCheckedChange)="refresh($event,data)"></td>
-      <td><input style="width: 100px;" nz-input value="data.Username" [(ngModel)]="data.Username" [disabled]="(isshow)? true : false" /></td>
-      <td><input style="width: 100px;" nz-input value="data.Password" [(ngModel)]="data.Password" [disabled]="(isshow)? true : false" /></td>
-      <td><input style="width: 150px;" nz-input value="data.Email" [(ngModel)]="data.Email" [disabled]="(isshow)? true : false" /></td>
-      <td><input style="width: 100px;" nz-input value="birth[i]" [(ngModel)]="birth[i]" [disabled]="(isshow)? true : false" /></td>      
+      <td><input style="width: 120px;" nz-input value="data.Username" [(ngModel)]="data.Username" [disabled]="(isshow)? true : false" /></td>
+      <td><input style="width: 120px;" nz-input value="data.Password" [(ngModel)]="data.Password" [disabled]="(isshow)? true : false" /></td>
+      <td><input style="width: 140px;" nz-input value="data.Email" [(ngModel)]="data.Email" [disabled]="(isshow)? true : false" /></td>
+      <td><input style="width: 50px;" nz-input [value]="(isshow)? birth[i] : birth2[i]"  [disabled]="(isshow)? true : false" /></td>      
       <!-- <td>
           <Select defaultValue="data.Sex" style="width: 70px;" name="sex" ngDefaultControl [(ngModel)]="data.Sex" [disabled]="(isshow)? true : false">
               <Option value="0"  [disabled]="(isshow)? true : false">Male</Option>

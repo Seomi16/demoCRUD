@@ -22,6 +22,8 @@ export class ListComponent implements OnInit {
   isshow= true;
   searchText;
   birth :any[]= [] ;
+  birth2 :any[]= [] ;
+
   date;
   year;
   today = new Date();
@@ -68,10 +70,13 @@ export class ListComponent implements OnInit {
     
     if (event == true){
       this.listdata.push(data);
+      this.year = formatDate(data.Birth, "yyyy","en-vn"); 
+      this.birth2.push(this.date - parseInt(this.year));
     } else{
       this.listdata.forEach((item,index)=>{
         if(data.Id == item.Id){
           this.listdata.splice(index,1);
+          this.birth2.splice(index,1);
         }
       })
     }    
@@ -85,8 +90,11 @@ export class ListComponent implements OnInit {
   Delete(){
     if(confirm("Are you sure?")){
       for(let i = 0; i < this.listdata.length; i++){
-        this.api.deData(this.listdata[i].ID).subscribe(()=> console.log("Delete success!"));
-      }        
+        console.log(this.listdata[i].ID);
+        this.api.delUser(this.listdata[i].ID).then(()=> console.log("Delete success!"));
+        
+      }    
+      location.reload(true);   
     }
   }
   Update(){   
@@ -98,8 +106,8 @@ export class ListComponent implements OnInit {
           for(let i = 0; i < this.listdata.length; i++){
             console.log(this.listdata[i]);
             
-            this.api.upData(this.listdata[i])
-            .subscribe(()=> console.log("Update success"),(error)=> this.error= error);
+            this.api.putUser(this.listdata[i])
+            .then(()=> console.log("Update success"),(error)=> this.error= error);
           }
           this.isshow = !this.isshow;      
         }

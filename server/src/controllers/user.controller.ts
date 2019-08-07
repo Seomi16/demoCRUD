@@ -241,6 +241,43 @@ export class UserController {
     const res = await this.userService.addUser(payload);
     return res;
   }
+  @post('api/update', {
+    responses: {
+      '200': PING_RESPONSE,
+    },
+  })
+  async putUser(
+    @param.query.number('id') Id : number,
+    @requestBody() user: any) {
+    const payload = {
+      Username: user.Username,
+      Password: user.Password,
+      Email: user.Email,
+      Birth: user.Birth,
+      Sex: user.Sex,  
+      Phone: user.Phone,
+      NationalID: user.NationalID,
+      Height: user.Height
+
+    };
+    const res = await this.userService.putUser(Id, payload);
+    return res;
+  }
+
+  @post('api/delete', {
+    responses: {
+      '200': PING_RESPONSE,
+    },
+  })
+  async delUser(
+    @param.query.number('id') Id : number,
+    @requestBody() id: number) {
+    const payload = {
+     ID: id   
+    };
+    const res = await this.userService.delUser(Id);
+    return res;
+  }
 
   
   @get('api/alluser', {

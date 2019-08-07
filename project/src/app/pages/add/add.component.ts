@@ -42,7 +42,7 @@ export class AddComponent implements OnInit {
 
     console.log(this.data);
     
-    this.api.addUser(this.data).then(()=> alert("Thêm thành công"),(error) => console.log(error));
+    this.api.addUser(this.data).then(()=> alert("Success"),(error) => console.log(error));
     
   }
 

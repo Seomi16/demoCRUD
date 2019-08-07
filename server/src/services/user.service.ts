@@ -6,7 +6,11 @@ export interface UserService {
   login(username: string, password: string): Promise<object>;
   signUp(payload: object): Promise<object>;
   addUser(payload: any): Promise<object>;
+  putUser(Id :number,payload: any): Promise<object>;
+  delUser(Id :number): Promise<object>;
+
   getListUser(): Promise<object>;
+
 
 
 }

@@ -20,7 +20,22 @@ export class UserService {
   }  
 
  
-
+  putUser(data) {
+    const apiURL = `http://localhost:3100/api/update?id=${data.ID}`;
+    return this.http
+      .post(apiURL,data)
+      .toPromise()
+      .then()
+      .catch(this.handleErrorPromise); 
+  }
+  delUser(data) {
+    const apiURL = `http://localhost:3100/api/delete?id=${data}`;
+    return this.http
+      .post(apiURL,data)
+      .toPromise()
+      .then()
+      .catch(this.handleErrorPromise); 
+  }
   addUser(data) {
     const apiURL = `http://localhost:3100/api/create`;
     return this.http

@@ -38,8 +38,22 @@ const addUser = reqT.post(`${userApiUrl}/api/create`,
 addUser.showAuth = false;
 addUser.showToken = false;
 
+const putUser = reqT.post(`${userApiUrl}/api/update/{Id}`,
+  '{payload}',
+  {putUser: ['Id','payload']}
+);
+putUser.showAuth = false;
+putUser.showToken = false;
 
-const config = resquest.secretRequest([loginT, signUpT, getListUser, addUser]);
+const delUser = reqT.post(`${userApiUrl}/api/delete/{Id}`,
+  '{payload}',
+  {delUser: ['Id']}
+);
+delUser.showAuth = false;
+delUser.showToken = false;
+
+
+const config = resquest.secretRequest([loginT, signUpT, getListUser, addUser, putUser, delUser]);
 
 export class UserDataSource extends juggler.DataSource {
   static dataSourceName = 'user';
