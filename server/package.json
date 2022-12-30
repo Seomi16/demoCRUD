@@ -61,7 +61,7 @@
     "pm2": "^3.5.0"
   },
   "devDependencies": {
-    "@loopback/build": "^1.4.0",
+    "@loopback/build": "^9.0.6",
     "@loopback/testlab": "^1.2.1",
     "@loopback/tslint-config": "^2.0.3",
     "@types/node": "^10.11.2",
